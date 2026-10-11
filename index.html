@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101010">
+<meta name="description" content="Tinoco FT — fotografia esportiva.">
+<title>Tinoco FT | Fotografia Esportiva</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#101010;color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{width:min(1100px,90%);margin:auto}
+header{border-bottom:1px solid #303030;background:#101010}
+.nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-size:24px;font-weight:900;letter-spacing:1px}
+.brand span{color:#999}
+.tagline{display:block;font-size:9px;letter-spacing:2px;color:#aaa}
+nav{display:flex;gap:18px;font-size:13px}
+.hero{padding:70px 0 60px;background:radial-gradient(ellipse at 85% 10%,#383838,transparent 45%),linear-gradient(135deg,#191919,#101010)}
+.eyebrow{font-size:11px;letter-spacing:3px;color:#aaa;font-weight:bold;margin-bottom:15px}
+h1{font-size:clamp(38px,8vw,68px);line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
+h1 span{color:#999}
+.hero p{color:#bbb;max-width:510px;margin-bottom:25px}
+.button{display:inline-block;background:#fff;color:#111;padding:13px 20px;border-radius:4px;font-size:13px;font-weight:bold}
+.section{padding:50px 0}
+.section h2{font-size:28px;margin-bottom:5px}
+.muted{color:#aaa;font-size:13px}
+.search{width:100%;max-width:400px;margin:25px 0;background:#191919;border:1px solid #333;color:white;padding:13px;border-radius:5px;font-size:15px}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.event{border:1px solid #333;border-radius:7px;overflow:hidden;background:#191919}
+.event-art{height:190px;display:flex;align-items:end;padding:18px;background:linear-gradient(0deg,#080808,transparent),repeating-linear-gradient(125deg,#303030 0 2px,#202020 2px 30px)}
+.event-art span{font-size:11px;letter-spacing:2px;font-weight:bold}
+.event-info{padding:18px}
+.event-info h3{font-size:19px;margin-bottom:5px}
+.event-info p{font-size:13px;color:#aaa;margin-bottom:15px}
+.event-link{font-size:12px;font-weight:bold;border-bottom:1px solid #888;padding-bottom:3px}
+.empty{display:none;color:#aaa;padding:20px 0}
+.about{background:#191919;border-block:1px solid #303030}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
+.about h2{font-size:30px;line-height:1.2;margin-bottom:15px}
+.about p{font-size:14px;color:#bbb}
+.mark{border:1px solid #444;border-radius:5px;text-align:center;padding:30px}
+.mark strong{font-size:60px;letter-spacing:4px}
+.mark p{font-size:10px;letter-spacing:3px}
+footer{padding:25px 0;color:#aaa;font-size:12px}
+.footer-inner{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+@media(max-width:600px){
+.nav{min-height:68px}
+.brand{font-size:20px}
+.tagline{font-size:8px;letter-spacing:1px}
+nav{gap:10px;font-size:12px}
+.hero{padding:55px 0 45px}
+.section{padding:38px 0}
+.events,.about-inner{grid-template-columns:1fr}
+.event-art{height:175px}
+.mark strong{font-size:48px}
+}
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<a class="brand" href="#">TINOCO <span>FT</span><span class="tagline">FOTOGRAFIA ESPORTIVA</span></a>
+<nav><a href="#eventos">Eventos</a><a href="#sobre">Sobre</a></nav>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<p class="eyebrow">O ESPORTE EM CADA DETALHE</p>
+<h1>Seu momento.<br><span>Sua história. Sua foto.</span></h1>
+<p>Os melhores registros de jogos, campeonatos e grandes momentos do esporte. Encontre suas fotos em um só lugar.</p>
+<a class="button" href="#eventos">EXPLORAR EVENTOS →</a>
+</div>
+</section>
+<section class="section container" id="eventos">
+<p class="eyebrow">GALERIAS ESPORTIVAS</p>
+<h2>Encontre seu evento</h2>
+<p class="muted">Escolha um evento para encontrar suas fotos.</p>
+<input class="search" id="search" type="search" placeholder="Buscar por nome do evento..." aria-label="Buscar evento">
+<div class="events" id="events">
+<article class="event" data-search="futsal campeonato">
+<div class="event-art"><span>FUTSAL / GALERIA</span></div>
+<div class="event-info">
+<h3>Campeonato de Futsal</h3>
+<p>Evento de demonstração · Fotos em breve</p>
+<a class="event-link" href="#sobre">GALERIA EM BREVE →</a>
+</div>
+</article>
+<article class="event" data-search="futebol campo">
+<div class="event-art"><span>FUTEBOL / GALERIA</span></div>
+<div class="event-info">
+<h3>Futebol de Campo</h3>
+<p>Evento de demonstração · Fotos em breve</p>
+<a class="event-link" href="#sobre">GALERIA EM BREVE →</a>
+</div>
+</article>
+</div>
+<p class="empty" id="empty">Nenhum evento encontrado. Tente outro nome.</p>
+</section>
+<section class="section about" id="sobre">
+<div class="container about-inner">
+<div>
+<p class="eyebrow">POR TRÁS DAS LENTES</p>
+<h2>O esporte merece ser lembrado.</h2>
+<p>A Tinoco FT nasceu para registrar a emoção, a dedicação e os momentos que fazem cada partida ser especial. Fotografia esportiva com atenção a cada detalhe.</p>
+</div>
+<div class="mark"><strong>TFT.</strong><p>FOCO · EMOÇÃO · ESPORTE</p></div>
+</div>
+</section>
+</main>
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Tinoco FT</span><span>Fotografia esportiva</span></div></footer>
+<script>
+const search=document.getElementById("search");
+const cards=document.querySelectorAll(".event");
+const empty=document.getElementById("empty");
+search.addEventListener("input",function(){
+const term=search.value.toLowerCase().trim();
+let visible=0;
+cards.forEach(function(card){
+const text=(card.innerText+" "+card.dataset.search).toLowerCase();
+const match=text.includes(term);
+card.style.display=match?"":"none";
+if(match)visible++;
+});
+empty.style.display=visible===0?"block":"none";
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
