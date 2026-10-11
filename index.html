@@ -1,43 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#101010">
 <meta name="description" content="Tinoco FT — fotografia esportiva.">
 <title>Tinoco FT | Fotografia Esportiva</title>
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:#101010;color:#f5f5f5;font-family:Arial,Helvetica,sans-serif;line-height:1.6}
 a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
 .container{width:min(1100px,90%);margin:auto}
-header{border-bottom:1px solid #303030;background:#101010}
+header{border-bottom:1px solid #303030}
 .nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
 .brand{font-size:24px;font-weight:900;letter-spacing:1px}
 .brand span{color:#999}
 .tagline{display:block;font-size:9px;letter-spacing:2px;color:#aaa}
-nav{display:flex;gap:18px;font-size:13px}
+nav{display:flex;gap:16px;font-size:13px}
 .hero{padding:70px 0 60px;background:radial-gradient(ellipse at 85% 10%,#383838,transparent 45%),linear-gradient(135deg,#191919,#101010)}
 .eyebrow{font-size:11px;letter-spacing:3px;color:#aaa;font-weight:bold;margin-bottom:15px}
 h1{font-size:clamp(38px,8vw,68px);line-height:1.05;letter-spacing:-2px;margin-bottom:20px}
 h1 span{color:#999}
 .hero p{color:#bbb;max-width:510px;margin-bottom:25px}
-.button{display:inline-block;background:#fff;color:#111;padding:13px 20px;border-radius:4px;font-size:13px;font-weight:bold}
-.section{padding:50px 0}
-.section h2{font-size:28px;margin-bottom:5px}
+.section{padding:48px 0}
+h2{font-size:28px;margin-bottom:5px}
 .muted{color:#aaa;font-size:13px}
-.search{width:100%;max-width:400px;margin:25px 0;background:#191919;border:1px solid #333;color:white;padding:13px;border-radius:5px;font-size:15px}
+.button{display:inline-block;background:#fff;color:#111;padding:12px 18px;border:0;border-radius:4px;font-size:12px;font-weight:bold}
+.button:hover{background:#ddd}
+.button.secondary{background:#222;color:#fff;border:1px solid #444}
+.button.danger{background:#512626;color:#fff}
+.search,.field input,.field textarea,.field select{width:100%;background:#191919;border:1px solid #383838;color:#fff;padding:12px;border-radius:4px}
+.search{max-width:420px;margin:22px 0}
 .events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .event{border:1px solid #333;border-radius:7px;overflow:hidden;background:#191919}
-.event-art{height:190px;display:flex;align-items:end;padding:18px;background:linear-gradient(0deg,#080808,transparent),repeating-linear-gradient(125deg,#303030 0 2px,#202020 2px 30px)}
+.event-art{height:190px;display:flex;align-items:end;padding:18px;background:linear-gradient(0deg,#080808,transparent),repeating-linear-gradient(125deg,#303030 0 2px,#202020 2px 30px);background-size:cover;background-position:center}
 .event-art span{font-size:11px;letter-spacing:2px;font-weight:bold}
 .event-info{padding:18px}
 .event-info h3{font-size:19px;margin-bottom:5px}
 .event-info p{font-size:13px;color:#aaa;margin-bottom:15px}
-.event-link{font-size:12px;font-weight:bold;border-bottom:1px solid #888;padding-bottom:3px}
-.empty{display:none;color:#aaa;padding:20px 0}
+.event-link{background:none;color:#fff;border:0;border-bottom:1px solid #888;padding-bottom:3px;font-size:12px;font-weight:bold}
+.empty{color:#aaa;padding:20px 0}
 .about{background:#191919;border-block:1px solid #303030}
 .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center}
 .about h2{font-size:30px;line-height:1.2;margin-bottom:15px}
@@ -47,88 +53,538 @@ h1 span{color:#999}
 .mark p{font-size:10px;letter-spacing:3px}
 footer{padding:25px 0;color:#aaa;font-size:12px}
 .footer-inner{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
-@media(max-width:600px){
-.nav{min-height:68px}
-.brand{font-size:20px}
-.tagline{font-size:8px;letter-spacing:1px}
-nav{gap:10px;font-size:12px}
-.hero{padding:55px 0 45px}
-.section{padding:38px 0}
-.events,.about-inner{grid-template-columns:1fr}
-.event-art{height:175px}
-.mark strong{font-size:48px}
+.admin-link{opacity:.7;font-size:11px}
+.panel{border:1px solid #383838;background:#171717;border-radius:8px;padding:20px;margin:18px 0}
+.panel h3{font-size:19px;margin-bottom:12px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.field label{font-size:12px;color:#bbb}
+.field textarea{min-height:75px;resize:vertical}
+.actions{display:flex;gap:9px;align-items:center;flex-wrap:wrap;margin-top:12px}
+.status{font-size:13px;color:#bbb;margin:12px 0;overflow-wrap:anywhere}
+.status.error{color:#ffaaaa}
+.status.success{color:#b8e6c1}
+.admin-album{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:14px 0;border-top:1px solid #333}
+.admin-album p{font-size:12px;color:#aaa}
+.pill{display:inline-block;border:1px solid #444;border-radius:99px;padding:3px 9px;font-size:10px;color:#bbb;margin-top:5px}
+.hidden{display:none!important}
+.gallery-top{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:20px}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.photo-item{background:#191919;border:1px solid #333;border-radius:5px;overflow:hidden}
+.photo-item img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#080808}
+.photo-item p{font-size:11px;color:#aaa;padding:8px}
+.small-note{font-size:11px;color:#888;margin-top:12px}
+@media(max-width:650px){
+ .nav{min-height:68px}.brand{font-size:20px}.tagline{font-size:8px}
+ nav{gap:10px;font-size:12px}.hero{padding:55px 0 45px}
+ .section{padding:36px 0}.events,.about-inner,.form-grid{grid-template-columns:1fr}
+ .event-art{height:175px}.mark strong{font-size:48px}
+ .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .admin-album{align-items:flex-start;flex-direction:column}
+ .panel{padding:14px}
 }
 </style>
 </head>
 <body>
 <header>
-<div class="container nav">
-<a class="brand" href="#">TINOCO <span>FT</span><span class="tagline">FOTOGRAFIA ESPORTIVA</span></a>
-<nav><a href="#eventos">Eventos</a><a href="#sobre">Sobre</a></nav>
-</div>
+ <div class="container nav">
+  <a class="brand" href="#">TINOCO <span>FT</span><span class="tagline">FOTOGRAFIA ESPORTIVA</span></a>
+  <nav><a href="#eventos">Eventos</a><a href="#sobre">Sobre</a><a href="#admin">Admin</a></nav>
+ </div>
 </header>
+
 <main>
-<section class="hero">
-<div class="container">
-<p class="eyebrow">O ESPORTE EM CADA DETALHE</p>
-<h1>Seu momento.<br><span>Sua história. Sua foto.</span></h1>
-<p>Os melhores registros de jogos, campeonatos e grandes momentos do esporte. Encontre suas fotos em um só lugar.</p>
-<a class="button" href="#eventos">EXPLORAR EVENTOS →</a>
-</div>
-</section>
-<section class="section container" id="eventos">
-<p class="eyebrow">GALERIAS ESPORTIVAS</p>
-<h2>Encontre seu evento</h2>
-<p class="muted">Escolha um evento para encontrar suas fotos.</p>
-<input class="search" id="search" type="search" placeholder="Buscar por nome do evento..." aria-label="Buscar evento">
-<div class="events" id="events">
-<article class="event" data-search="futsal campeonato">
-<div class="event-art"><span>FUTSAL / GALERIA</span></div>
-<div class="event-info">
-<h3>Campeonato de Futsal</h3>
-<p>Evento de demonstração · Fotos em breve</p>
-<a class="event-link" href="#sobre">GALERIA EM BREVE →</a>
-</div>
-</article>
-<article class="event" data-search="futebol campo">
-<div class="event-art"><span>FUTEBOL / GALERIA</span></div>
-<div class="event-info">
-<h3>Futebol de Campo</h3>
-<p>Evento de demonstração · Fotos em breve</p>
-<a class="event-link" href="#sobre">GALERIA EM BREVE →</a>
-</div>
-</article>
-</div>
-<p class="empty" id="empty">Nenhum evento encontrado. Tente outro nome.</p>
-</section>
-<section class="section about" id="sobre">
-<div class="container about-inner">
-<div>
-<p class="eyebrow">POR TRÁS DAS LENTES</p>
-<h2>O esporte merece ser lembrado.</h2>
-<p>A Tinoco FT nasceu para registrar a emoção, a dedicação e os momentos que fazem cada partida ser especial. Fotografia esportiva com atenção a cada detalhe.</p>
-</div>
-<div class="mark"><strong>TFT.</strong><p>FOCO · EMOÇÃO · ESPORTE</p></div>
-</div>
-</section>
+ <section class="hero">
+  <div class="container">
+   <p class="eyebrow">O ESPORTE EM CADA DETALHE</p>
+   <h1>Seu momento.<br><span>Sua história. Sua foto.</span></h1>
+   <p>Os melhores registros de jogos, campeonatos e grandes momentos do esporte. Encontre suas fotos em um só lugar.</p>
+   <a class="button" href="#eventos">EXPLORAR EVENTOS →</a>
+  </div>
+ </section>
+
+ <section class="section container" id="eventos">
+  <p class="eyebrow">GALERIAS ESPORTIVAS</p>
+  <h2>Encontre seu evento</h2>
+  <p class="muted">Escolha um evento para encontrar suas fotos.</p>
+  <input class="search" id="search" type="search" placeholder="Buscar por nome do evento..." aria-label="Buscar evento">
+  <div class="events" id="events"></div>
+  <p class="empty" id="empty">Nenhum evento encontrado. Tente outro nome.</p>
+  <p class="status" id="publicStatus" role="status"></p>
+ </section>
+
+ <section class="section container hidden" id="albumView">
+  <div class="gallery-top">
+   <div><p class="eyebrow">GALERIA TINOCO FT</p><h2 id="albumTitle">Álbum</h2><p class="muted" id="albumDescription"></p></div>
+   <button class="button secondary" id="backBtn" type="button">← Voltar aos eventos</button>
+  </div>
+  <div class="photo-grid" id="publicPhotos"></div>
+  <p class="status" id="galleryStatus"></p>
+ </section>
+
+ <section class="section about" id="sobre">
+  <div class="container about-inner">
+   <div><p class="eyebrow">POR TRÁS DAS LENTES</p><h2>O esporte merece ser lembrado.</h2>
+   <p>A Tinoco FT nasceu para registrar a emoção, a dedicação e os momentos que fazem cada partida ser especial. Fotografia esportiva com atenção a cada detalhe.</p></div>
+   <div class="mark"><strong>TFT.</strong><p>FOCO · EMOÇÃO · ESPORTE</p></div>
+  </div>
+ </section>
+
+ <section class="section container" id="admin">
+  <p class="eyebrow">ÁREA RESTRITA</p><h2>Painel do fotógrafo</h2>
+  <p class="muted">Entre com sua conta administrativa do Supabase.</p>
+
+  <div class="panel" id="loginPanel">
+   <form id="loginForm">
+    <div class="form-grid">
+     <div class="field"><label for="email">E-mail</label><input id="email" type="email" autocomplete="username" required></div>
+     <div class="field"><label for="password">Senha</label><input id="password" type="password" autocomplete="current-password" required></div>
+    </div>
+    <button class="button" type="submit">ENTRAR NO PAINEL</button>
+    <p class="status" id="loginStatus" role="status"></p>
+   </form>
+  </div>
+
+  <div id="adminPanel" class="hidden">
+   <div class="actions"><span class="muted" id="adminIdentity"></span><button class="button secondary" id="logoutBtn" type="button">Sair</button></div>
+
+   <div class="panel">
+    <h3>Criar álbum</h3>
+    <form id="albumForm">
+     <div class="form-grid">
+      <div class="field"><label for="albumName">Título do álbum *</label><input id="albumName" maxlength="120" required placeholder="Ex.: Campeonato Municipal 2026"></div>
+      <div class="field"><label for="albumDesc">Descrição</label><input id="albumDesc" maxlength="250" placeholder="Ex.: Final — categoria adulta"></div>
+     </div>
+     <label class="muted"><input type="checkbox" id="publishOnCreate"> Publicar imediatamente</label>
+     <div class="actions"><button class="button" type="submit">CRIAR ÁLBUM</button></div>
+     <p class="status" id="albumStatus" role="status"></p>
+    </form>
+   </div>
+
+   <div class="panel">
+    <h3>Enviar fotos</h3>
+    <p class="muted">Selecione um álbum e envie várias imagens. O original fica privado e a prévia pública recebe a marca-d’água @tinoco_ft.</p>
+    <form id="uploadForm">
+     <div class="field"><label for="uploadAlbum">Álbum de destino *</label><select id="uploadAlbum" required><option value="">Selecione um álbum</option></select></div>
+     <div class="field"><label for="photoFiles">Selecionar fotos (JPG, PNG ou WEBP) *</label><input id="photoFiles" type="file" accept="image/jpeg,image/png,image/webp" multiple required></div>
+     <div class="actions"><button class="button" type="submit">ENVIAR FOTOS</button></div>
+     <p class="status" id="uploadStatus" role="status"></p>
+     <p class="small-note">Faça primeiro um teste com poucas imagens. Fotos grandes podem demorar para enviar.</p>
+    </form>
+   </div>
+
+   <div class="panel">
+    <h3>Gerenciar álbuns</h3>
+    <div id="adminAlbums"><p class="muted">Carregando álbuns...</p></div>
+    <p class="status" id="manageStatus" role="status"></p>
+   </div>
+  </div>
+ </section>
 </main>
-<footer><div class="container footer-inner"><span>© <span id="year"></span> Tinoco FT</span><span>Fotografia esportiva</span></div></footer>
+
+<footer><div class="container footer-inner"><span>© <span id="year"></span> Tinoco FT</span><span>Fotografia esportiva · <a class="admin-link" href="#admin">Acesso administrativo</a></span></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const search=document.getElementById("search");
-const cards=document.querySelectorAll(".event");
-const empty=document.getElementById("empty");
-search.addEventListener("input",function(){
-const term=search.value.toLowerCase().trim();
-let visible=0;
-cards.forEach(function(card){
-const text=(card.innerText+" "+card.dataset.search).toLowerCase();
-const match=text.includes(term);
-card.style.display=match?"":"none";
-if(match)visible++;
+/* Configuração pública do projeto Supabase */
+const SUPABASE_URL = "https://dpqggpjnfkgyubzjroln.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_h4vmqflcAyTkkmev_JvG_LDA_mLH5HUsg";
+const PREVIEW_BUCKET = "tinoco-previews";
+const ORIGINAL_BUCKET = "tinoco-originais";
+
+const client = supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const $ = id => document.getElementById(id);
+
+let currentUser = null;
+let publicAlbums = [];
+
+function status(id, message, type="") {
+ const el = $(id);
+ el.textContent = message;
+ el.className = "status" + (type ? " " + type : "");
+}
+function previewUrl(path) {
+ return client.storage.from(PREVIEW_BUCKET).getPublicUrl(path).data.publicUrl;
+}
+function cleanFilename(name) {
+ return name.normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+  .replace(/[^a-zA-Z0-9._-]+/g,"-").slice(-100) || "foto.jpg";
+}
+
+async function loadPublicAlbums() {
+ status("publicStatus","Carregando galerias...");
+ const {data,error} = await client.from("albums")
+  .select("id,title,description,cover_path,published,created_at")
+  .eq("published",true).order("created_at",{ascending:false});
+
+ if(error) {
+  status("publicStatus","Não foi possível carregar as galerias. Verifique a conexão e as políticas do Supabase.","error");
+  console.error(error);
+  return;
+ }
+ publicAlbums = data || [];
+ renderPublicAlbums();
+ status("publicStatus","");
+}
+function renderPublicAlbums() {
+ const term = $("search").value.toLowerCase().trim();
+ const found = publicAlbums.filter(a => (a.title+" "+(a.description||"")).toLowerCase().includes(term));
+ const holder = $("events");
+ holder.innerHTML = "";
+ $("empty").classList.toggle("hidden",found.length !== 0);
+
+ found.forEach(album => {
+  const card = document.createElement("article");
+  card.className = "event";
+  const art = document.createElement("div");
+  art.className = "event-art";
+  if(album.cover_path) art.style.backgroundImage =
+   `linear-gradient(0deg,#080808d9,transparent 75%),url("${previewUrl(album.cover_path)}")`;
+  const label = document.createElement("span");
+  label.textContent = "TINOCO FT / GALERIA";
+  art.appendChild(label);
+
+  const info = document.createElement("div");
+  info.className = "event-info";
+  const title = document.createElement("h3");
+  title.textContent = album.title;
+  const desc = document.createElement("p");
+  desc.textContent = album.description || "Confira as fotos deste evento.";
+  const button = document.createElement("button");
+  button.className = "event-link";
+  button.type = "button";
+  button.textContent = "VER FOTOS →";
+  button.addEventListener("click",()=>openAlbum(album));
+  info.append(title,desc,button);
+  card.append(art,info);
+  holder.appendChild(card);
+ });
+}
+$("search").addEventListener("input",renderPublicAlbums);
+
+async function openAlbum(album) {
+ $("albumTitle").textContent = album.title;
+ $("albumDescription").textContent = album.description || "";
+ $("publicPhotos").innerHTML = "";
+ $("albumView").classList.remove("hidden");
+ $("eventos").classList.add("hidden");
+ status("galleryStatus","Carregando fotos...");
+ history.replaceState(null,"","#albumView");
+
+ const {data,error} = await client.from("photos")
+  .select("id,image_path,display_order,created_at")
+  .eq("album_id",album.id)
+  .order("display_order",{ascending:true})
+  .order("created_at",{ascending:true});
+
+ if(error) {
+  status("galleryStatus","Não foi possível carregar as fotos deste álbum.","error");
+  console.error(error);
+  return;
+ }
+ const grid = $("publicPhotos");
+ (data||[]).forEach((photo,index)=>{
+  const item = document.createElement("div");
+  item.className = "photo-item";
+  const img = document.createElement("img");
+  img.src = previewUrl(photo.image_path);
+  img.alt = `${album.title} — foto ${index+1}`;
+  img.loading = "lazy";
+  const caption = document.createElement("p");
+  caption.textContent = `Foto ${String(index+1).padStart(2,"0")}`;
+  item.append(img,caption);
+  grid.appendChild(item);
+ });
+ status("galleryStatus",data?.length ? `${data.length} foto(s) neste álbum.` : "Este álbum ainda não tem fotos.");
+}
+$("backBtn").addEventListener("click",()=>{
+ $("albumView").classList.add("hidden");
+ $("eventos").classList.remove("hidden");
+ history.replaceState(null,"","#eventos");
 });
-empty.style.display=visible===0?"block":"none";
+
+async function refreshAdmin() {
+ const {data,error} = await client.from("albums")
+  .select("id,title,description,cover_path,published,created_at")
+  .order("created_at",{ascending:false});
+
+ if(error) {
+  $("adminAlbums").textContent = "Não foi possível carregar os álbuns. Confira as permissões do administrador.";
+  console.error(error);
+  return;
+ }
+ const albums = data || [];
+ const select = $("uploadAlbum");
+ select.innerHTML = '<option value="">Selecione um álbum</option>';
+ albums.forEach(a=>{
+  const opt = document.createElement("option");
+  opt.value = a.id;
+  opt.textContent = a.title;
+  select.appendChild(opt);
+ });
+
+ const holder = $("adminAlbums");
+ holder.innerHTML = "";
+ if(!albums.length) {
+  holder.innerHTML = '<p class="muted">Você ainda não criou álbuns.</p>';
+  return;
+ }
+
+ albums.forEach(album=>{
+  const row = document.createElement("div");
+  row.className = "admin-album";
+  const details = document.createElement("div");
+  const title = document.createElement("strong");
+  title.textContent = album.title;
+  const desc = document.createElement("p");
+  desc.textContent = album.description || "Sem descrição";
+  const pill = document.createElement("span");
+  pill.className = "pill";
+  pill.textContent = album.published ? "PUBLICADO" : "RASCUNHO";
+  details.append(title,document.createElement("br"),desc,pill);
+
+  const actions = document.createElement("div");
+  actions.className = "actions";
+  const toggle = document.createElement("button");
+  toggle.className = "button secondary";
+  toggle.type = "button";
+  toggle.textContent = album.published ? "Ocultar" : "Publicar";
+  toggle.addEventListener("click",async()=>{
+   toggle.disabled = true;
+   const {error} = await client.from("albums")
+    .update({published:!album.published}).eq("id",album.id);
+   if(error) status("manageStatus","Falha ao alterar publicação: "+error.message,"error");
+   else {
+    status("manageStatus",album.published?"Álbum ocultado.":"Álbum publicado.","success");
+    await refreshAdmin();
+    await loadPublicAlbums();
+   }
+   toggle.disabled = false;
+  });
+
+  const del = document.createElement("button");
+  del.className = "button danger";
+  del.type = "button";
+  del.textContent = "Excluir";
+  del.addEventListener("click",()=>deleteAlbum(album));
+
+  actions.append(toggle,del);
+  row.append(details,actions);
+  holder.appendChild(row);
+ });
+}
+
+$("loginForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ status("loginStatus","Entrando...");
+ const {data,error} = await client.auth.signInWithPassword({
+  email:$("email").value.trim(),
+  password:$("password").value
+ });
+ if(error) {
+  status("loginStatus","Não foi possível entrar. Confira o e-mail e a senha.","error");
+  console.error(error);
+  return;
+ }
+ $("password").value = "";
+ currentUser = data.user;
+ await showAdmin();
+ status("loginStatus","Login realizado.","success");
 });
-document.getElementById("year").textContent=new Date().getFullYear();
+
+async function showAdmin() {
+ if(!currentUser) {
+  $("loginPanel").classList.remove("hidden");
+  $("adminPanel").classList.add("hidden");
+  return;
+ }
+ $("loginPanel").classList.add("hidden");
+ $("adminPanel").classList.remove("hidden");
+ $("adminIdentity").textContent = "Conectado: "+currentUser.email;
+ await refreshAdmin();
+}
+$("logoutBtn").addEventListener("click",async()=>{
+ await client.auth.signOut();
+ currentUser = null;
+ $("loginForm").reset();
+ await showAdmin();
+ status("loginStatus","Você saiu do painel.");
+});
+client.auth.onAuthStateChange((_event,session)=>{
+ currentUser = session?.user || null;
+ if(!currentUser) {
+  $("loginPanel").classList.remove("hidden");
+  $("adminPanel").classList.add("hidden");
+ }
+});
+
+$("albumForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ if(!currentUser) return status("albumStatus","Entre no painel antes de criar um álbum.","error");
+ status("albumStatus","Criando álbum...");
+ const payload = {
+  title:$("albumName").value.trim(),
+  description:$("albumDesc").value.trim(),
+  published:$("publishOnCreate").checked
+ };
+ const {error} = await client.from("albums").insert(payload);
+ if(error) {
+  status("albumStatus","Erro ao criar álbum: "+error.message,"error");
+  return;
+ }
+ $("albumForm").reset();
+ status("albumStatus","Álbum criado com sucesso.","success");
+ await refreshAdmin();
+ await loadPublicAlbums();
+});
+
+function watermarkPreview(file) {
+ return new Promise((resolve,reject)=>{
+  const image = new Image();
+  const objectUrl = URL.createObjectURL(file);
+  image.onload = ()=>{
+   try {
+    const canvas = document.createElement("canvas");
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(image,0,0);
+    const font = Math.max(18,Math.round(Math.min(canvas.width,canvas.height)*0.035));
+    const margin = Math.round(font*0.8);
+    ctx.font = `bold ${font}px Arial,sans-serif`;
+    ctx.textAlign = "right";
+    ctx.textBaseline = "bottom";
+    ctx.lineJoin = "round";
+    ctx.lineWidth = Math.max(2,font*0.14);
+    ctx.strokeStyle = "rgba(0,0,0,.75)";
+    ctx.fillStyle = "rgba(255,255,255,.9)";
+    ctx.strokeText("@tinoco_ft",canvas.width-margin,canvas.height-margin);
+    ctx.fillText("@tinoco_ft",canvas.width-margin,canvas.height-margin);
+    canvas.toBlob(blob=>{
+     URL.revokeObjectURL(objectUrl);
+     if(blob) resolve(blob);
+     else reject(new Error("Não foi possível gerar a prévia."));
+    },"image/jpeg",0.92);
+   } catch(err) {
+    URL.revokeObjectURL(objectUrl);
+    reject(err);
+   }
+  };
+  image.onerror = ()=>{
+   URL.revokeObjectURL(objectUrl);
+   reject(new Error("Não foi possível abrir a imagem."));
+  };
+  image.src = objectUrl;
+ });
+}
+
+$("uploadForm").addEventListener("submit",async event=>{
+ event.preventDefault();
+ if(!currentUser) return status("uploadStatus","Entre no painel antes de enviar fotos.","error");
+ const albumId = $("uploadAlbum").value;
+ const files = Array.from($("photoFiles").files || []);
+ if(!albumId || !files.length) return status("uploadStatus","Escolha um álbum e selecione fotos.","error");
+ if(files.some(f=>!["image/jpeg","image/png","image/webp"].includes(f.type)))
+  return status("uploadStatus","Use somente JPG, PNG ou WEBP.","error");
+
+ const button = $("uploadForm").querySelector('button[type="submit"]');
+ button.disabled = true;
+ let uploaded = 0, failed = 0;
+ try {
+  const {data:existing} = await client.from("photos").select("display_order")
+   .eq("album_id",albumId).order("display_order",{ascending:false}).limit(1);
+  let order = (existing?.[0]?.display_order ?? -1)+1;
+  let firstPreview = null;
+
+  for(let i=0;i<files.length;i++) {
+   const file = files[i];
+   status("uploadStatus",`Preparando foto ${i+1} de ${files.length}: ${file.name}`);
+   const unique = `${Date.now()}-${crypto.randomUUID()}`;
+   const originalPath = `${albumId}/${unique}-${cleanFilename(file.name)}`;
+   const previewPath = `${albumId}/${unique}.jpg`;
+   try {
+    const previewBlob = await watermarkPreview(file);
+
+    const original = await client.storage.from(ORIGINAL_BUCKET)
+     .upload(originalPath,file,{upsert:false,contentType:file.type});
+    if(original.error) throw original.error;
+
+    const preview = await client.storage.from(PREVIEW_BUCKET)
+     .upload(previewPath,previewBlob,{upsert:false,contentType:"image/jpeg"});
+    if(preview.error) {
+     await client.storage.from(ORIGINAL_BUCKET).remove([originalPath]);
+     throw preview.error;
+    }
+
+    const {error:insertError} = await client.from("photos").insert({
+     album_id:albumId,
+     image_path:previewPath,
+     original_path:originalPath,
+     display_order:order++
+    });
+    if(insertError) {
+     await client.storage.from(PREVIEW_BUCKET).remove([previewPath]);
+     await client.storage.from(ORIGINAL_BUCKET).remove([originalPath]);
+     throw insertError;
+    }
+    if(!firstPreview) firstPreview = previewPath;
+    uploaded++;
+   } catch(err) {
+    failed++;
+    console.error("Erro ao enviar",file.name,err);
+   }
+  }
+
+  if(firstPreview) {
+   const {data:album} = await client.from("albums").select("cover_path")
+    .eq("id",albumId).single();
+   if(album && !album.cover_path) {
+    await client.from("albums").update({cover_path:firstPreview}).eq("id",albumId);
+   }
+  }
+  $("photoFiles").value = "";
+  await refreshAdmin();
+  await loadPublicAlbums();
+  status("uploadStatus",`Envio concluído: ${uploaded} foto(s) enviada(s)${failed?`; ${failed} falharam. Veja o console e as permissões.`:"."}`,failed?"error":"success");
+ } catch(err) {
+  console.error(err);
+  status("uploadStatus","Ocorreu um erro no envio. Confira as permissões do Supabase e tente novamente.","error");
+ } finally {
+  button.disabled = false;
+ }
+});
+
+async function deleteAlbum(album) {
+ if(!confirm(`Excluir o álbum "${album.title}" e todas as fotos? Essa ação não pode ser desfeita.`)) return;
+ status("manageStatus","Excluindo álbum e arquivos...");
+ const {data:photos,error:listError} = await client.from("photos")
+  .select("image_path,original_path").eq("album_id",album.id);
+ if(listError) return status("manageStatus","Falha ao listar fotos: "+listError.message,"error");
+
+ const previews = (photos||[]).map(p=>p.image_path).filter(Boolean);
+ const originals = (photos||[]).map(p=>p.original_path).filter(Boolean);
+ if(previews.length) {
+  const {error} = await client.storage.from(PREVIEW_BUCKET).remove(previews);
+  if(error) console.warn("Falha ao remover prévias",error);
+ }
+ if(originals.length) {
+  const {error} = await client.storage.from(ORIGINAL_BUCKET).remove(originals);
+  if(error) console.warn("Falha ao remover originais",error);
+ }
+ const {error} = await client.from("albums").delete().eq("id",album.id);
+ if(error) return status("manageStatus","Falha ao excluir álbum: "+error.message,"error");
+ status("manageStatus","Álbum excluído.","success");
+ await refreshAdmin();
+ await loadPublicAlbums();
+}
+
+$("year").textContent = new Date().getFullYear();
+(async()=>{
+ const {data} = await client.auth.getSession();
+ currentUser = data.session?.user || null;
+ await showAdmin();
+ await loadPublicAlbums();
+})();
 </script>
 </body>
 </html>
